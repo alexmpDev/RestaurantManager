@@ -3,6 +3,7 @@ package com.alexmpdev.restaurantmanager.restaurants.service.impl;
 import com.alexmpdev.restaurantmanager.restaurants.model.Restaurant;
 import com.alexmpdev.restaurantmanager.restaurants.repository.RestaurantRepository;
 import com.alexmpdev.restaurantmanager.restaurants.service.RestaurantService;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,18 +27,21 @@ public class RestaurantServiceImpl implements RestaurantService {
         return this.restaurantRepository.findById(id).orElse(null);
     }
 
-    public String save(Restaurant restaurant) {
-
+    public void save(Restaurant restaurant) {
         this.restaurantRepository.save(restaurant);
-        return "Has guardado un restaurante con exito";
     }
 
-    public String update(Long id, Restaurant restaurant) {
+    public String update(Long id, Restaurant restaurant) throws BadRequestException {
 
         Restaurant editableRestaurant = getRestaurant(id);
+        if (editableRestaurant == null){
+            throw new BadRequestException("El restaurante no existe");
+        }
         editableRestaurant.setCategoryId(restaurant.getCategoryId());
         editableRestaurant.setTitle(restaurant.getTitle());
-        editableRestaurant.setPhoto(restaurant.getPhoto());
+        if (restaurant.getPhoto() != null) {
+            editableRestaurant.setPhoto(restaurant.getPhoto());
+        }
         editableRestaurant.setDescription(restaurant.getDescription());
         this.restaurantRepository.save(editableRestaurant);
 

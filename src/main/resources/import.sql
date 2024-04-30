@@ -1,2 +1,2 @@
-INSERT INTO restaurants VALUES (1, null, 1, 'new restaurant description', 'New Restaurant', null), (1, null, 2, 'new restaurant description example 2', 'New Restaurant 2', null)
-INSERT INTO dishes VALUES (5.50, 1, 'Helado de chocolate con sirope de chocolate por encima', 'Explosion de chocolate'), (12.99, 2, 'pasta con salsa de tomate y queso', 'Pasta roja')
+INSERT INTO dishes VALUES (5.50, 1, 'Helado de chocolate con sirope de chocolate por encima', 'Explosion de chocolate'), (12.99, 2, 'pasta con salsa de tomate y queso', 'Pasta roja');
+INSERT INTO restaurants (category_id,created_at,description, title,photo) VALUES (1, null, 'new restaurant description', 'New Restaurant', null), (2, null, 'new restaurant description', 'New Restaurant 2', null);
