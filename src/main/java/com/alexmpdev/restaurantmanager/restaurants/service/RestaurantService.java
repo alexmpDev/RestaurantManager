@@ -7,9 +7,10 @@ import java.util.List;
 
 public interface RestaurantService {
 
-    List<Restaurant> getAllRestaurants();
+    List<Restaurant> getAllRestaurants(Integer category, String name);
     Restaurant getRestaurant(Long id);
     void save(Restaurant restaurant);
     String update(Long id, Restaurant restaurant) throws BadRequestException;
     String delete(Long id);
+    List<Restaurant> findByCategoryId(int categoryId);
 }

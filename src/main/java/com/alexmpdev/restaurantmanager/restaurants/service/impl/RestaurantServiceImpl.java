@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -20,7 +21,25 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public List<Restaurant> getAllRestaurants() { return this.restaurantRepository.findAll(); }
+    public List<Restaurant> getAllRestaurants(Integer category, String name) {
+        List<Restaurant> restaurants =  this.restaurantRepository.findAll();
+
+        if (category != null){
+            restaurants = restaurants
+                    .stream()
+                    .filter(restaurant ->  category == restaurant.getCategoryId())
+                    .collect(Collectors.toList());
+        }
+
+        if (name != null){
+            restaurants = restaurants
+                    .stream()
+                    .filter(restaurant ->  restaurant.getTitle().toLowerCase().contains(name.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+
+        return restaurants;
+    }
 
     public Restaurant getRestaurant(Long id) {
 
@@ -54,5 +73,10 @@ public class RestaurantServiceImpl implements RestaurantService {
         this.restaurantRepository.delete(restaurant);
 
         return "Has eliminado el restaurante con exito";
+    }
+
+    public List<Restaurant> findByCategoryId(int categoryId) {
+
+        return this.restaurantRepository.findByCategoryId(categoryId);
     }
 }

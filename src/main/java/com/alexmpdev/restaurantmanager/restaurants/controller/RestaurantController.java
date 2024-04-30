@@ -23,8 +23,10 @@ public class RestaurantController {
     }
 
     @GetMapping
-    public List<Restaurant> getAllRestaurants(){
-        return restaurantService.getAllRestaurants();
+    public List<Restaurant> getAllRestaurants(
+            @RequestParam(required = false) Integer category,
+            @RequestParam(required = false) String name){
+        return restaurantService.getAllRestaurants(category, name);
     }
 
     @GetMapping("/{id}")
@@ -48,5 +50,10 @@ public class RestaurantController {
     public String delete(@PathVariable("id") Long id) {
 
         return  restaurantService.delete(id);
+    }
+
+    @GetMapping("/category/{categoryId}")
+    public List<Restaurant> findByCategoryId(@PathVariable("categoryId") int categoryId){
+        return restaurantService.findByCategoryId(categoryId);
     }
 }
