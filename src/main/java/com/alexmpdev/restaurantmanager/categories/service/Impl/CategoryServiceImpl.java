@@ -7,7 +7,6 @@ import com.alexmpdev.restaurantmanager.exception.CategoryNotFoundException;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -42,6 +41,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
     public void delete(Long id) {
 
+        Category deleteCategory = getCategory(id);
+        if (deleteCategory == null){
+            throw new CategoryNotFoundException("La categoria no existe");
+        }
         this.categoryRepository.deleteById(id);
     }
 }

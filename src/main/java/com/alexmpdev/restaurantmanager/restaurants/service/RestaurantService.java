@@ -11,6 +11,6 @@ public interface RestaurantService {
     Restaurant getRestaurant(Long id);
     void save(Restaurant restaurant);
     String update(Long id, Restaurant restaurant);
-    String delete(Long id);
+    void delete(Long id);
     List<Restaurant> findByCategoryId(int categoryId);
 }

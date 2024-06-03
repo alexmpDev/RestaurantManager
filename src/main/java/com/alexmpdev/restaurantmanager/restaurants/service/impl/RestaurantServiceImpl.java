@@ -68,12 +68,15 @@ public class RestaurantServiceImpl implements RestaurantService {
         return "Has editado el restaurante con id: " + id;
     }
 
-    public String delete(Long id) {
+    public void delete(Long id) {
 
         Restaurant restaurant = getRestaurant(id);
+        if (restaurant == null){
+            throw new RestaurantNotFoundException("El restaurante no existe");
+        }
+
         this.restaurantRepository.delete(restaurant);
 
-        return "Has eliminado el restaurante con exito";
     }
 
     public List<Restaurant> findByCategoryId(int categoryId) {

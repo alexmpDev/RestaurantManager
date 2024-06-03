@@ -43,9 +43,8 @@ public class RestaurantController {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") Long id) {
-
-        return  restaurantService.delete(id);
+    public void delete(@PathVariable("id") Long id) {
+        restaurantService.delete(id);
     }
 
     @GetMapping("/category/{categoryId}")
