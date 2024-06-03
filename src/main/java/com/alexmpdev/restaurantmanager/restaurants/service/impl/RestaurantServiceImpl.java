@@ -1,5 +1,6 @@
 package com.alexmpdev.restaurantmanager.restaurants.service.impl;
 
+import com.alexmpdev.restaurantmanager.exception.RestaurantNotFoundException;
 import com.alexmpdev.restaurantmanager.restaurants.model.Restaurant;
 import com.alexmpdev.restaurantmanager.restaurants.repository.RestaurantRepository;
 import com.alexmpdev.restaurantmanager.restaurants.service.RestaurantService;
@@ -50,11 +51,11 @@ public class RestaurantServiceImpl implements RestaurantService {
         this.restaurantRepository.save(restaurant);
     }
 
-    public String update(Long id, Restaurant restaurant) throws BadRequestException {
+    public String update(Long id, Restaurant restaurant){
 
         Restaurant editableRestaurant = getRestaurant(id);
         if (editableRestaurant == null){
-            throw new BadRequestException("El restaurante no existe");
+            throw new RestaurantNotFoundException("El restaurante no existe");
         }
         editableRestaurant.setCategoryId(restaurant.getCategoryId());
         editableRestaurant.setTitle(restaurant.getTitle());
