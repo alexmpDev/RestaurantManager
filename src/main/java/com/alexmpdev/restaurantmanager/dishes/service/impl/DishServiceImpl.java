@@ -31,11 +31,9 @@ public class DishServiceImpl implements DishService {
         return this.dishRepository.findById(id).orElse(null);
     }
 
-    public String save( Dish dish ) {
+    public void save( Dish dish ) {
 
         this.dishRepository.save(dish);
-
-        return "Has guardado un plato con exito";
     }
 
     public String update( Long id, Dish dish ) {

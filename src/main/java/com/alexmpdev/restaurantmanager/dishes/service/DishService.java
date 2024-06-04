@@ -8,7 +8,7 @@ public interface DishService {
 
     List<Dish> getAllDishes();
     Dish getDish(Long Id);
-    String save(Dish dish);
+    void save(Dish dish);
     String update(Long id, Dish dish);
     String delete(Long id);
 }

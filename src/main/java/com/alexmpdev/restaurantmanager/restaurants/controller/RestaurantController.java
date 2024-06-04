@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-    @RequestMapping("/api/v1/restaurant")
+@RequestMapping("/api/v1/restaurant")
 @Tag(name = "RestaurantController" , description = "Tratamiento de los datos del restaurante")
 public class RestaurantController {
     private final RestaurantService restaurantService;

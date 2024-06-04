@@ -31,9 +31,9 @@ public class DishController {
     }
 
     @PostMapping
-    public String save( Dish dish ) {
+    public void save(@RequestBody Dish dish ) {
 
-        return dishService.save(dish);
+        dishService.save(dish);
     }
 
     @PutMapping("/{id}")
