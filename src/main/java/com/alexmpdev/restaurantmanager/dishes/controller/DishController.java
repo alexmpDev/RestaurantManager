@@ -37,7 +37,7 @@ public class DishController {
     }
 
     @PutMapping("/{id}")
-    public String update( @PathVariable("id")Long id, Dish dish ) {
+    public String update( @PathVariable("id")Long id, @RequestBody Dish dish ) {
 
         return dishService.update(id, dish);
     }

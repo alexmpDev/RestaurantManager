@@ -1,10 +1,10 @@
 package com.alexmpdev.restaurantmanager.restaurants.service.impl;
 
-import com.alexmpdev.restaurantmanager.exception.RestaurantNotFoundException;
+import com.alexmpdev.restaurantmanager.exception.DishException;
+import com.alexmpdev.restaurantmanager.exception.RestaurantException;
 import com.alexmpdev.restaurantmanager.restaurants.model.Restaurant;
 import com.alexmpdev.restaurantmanager.restaurants.repository.RestaurantRepository;
 import com.alexmpdev.restaurantmanager.restaurants.service.RestaurantService;
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +44,8 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     public Restaurant getRestaurant(Long id) {
 
-        return this.restaurantRepository.findById(id).orElse(null);
+        return this.restaurantRepository.findById(id)
+                .orElseThrow(() -> new RestaurantException(RestaurantException.ERROR_NOT_FOUND));
     }
 
     public void save(Restaurant restaurant) {
@@ -54,9 +55,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     public String update(Long id, Restaurant restaurant){
 
         Restaurant editableRestaurant = getRestaurant(id);
-        if (editableRestaurant == null){
-            throw new RestaurantNotFoundException("El restaurante no existe");
-        }
         editableRestaurant.setCategoryId(restaurant.getCategoryId());
         editableRestaurant.setTitle(restaurant.getTitle());
         if (restaurant.getPhoto() != null) {
@@ -72,7 +70,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
         Restaurant restaurant = getRestaurant(id);
         if (restaurant == null){
-            throw new RestaurantNotFoundException("El restaurante no existe");
+            throw new RestaurantException("El restaurante no existe");
         }
 
         this.restaurantRepository.delete(restaurant);

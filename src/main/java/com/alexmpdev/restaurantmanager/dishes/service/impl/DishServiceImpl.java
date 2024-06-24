@@ -3,8 +3,7 @@ package com.alexmpdev.restaurantmanager.dishes.service.impl;
 import com.alexmpdev.restaurantmanager.dishes.model.Dish;
 import com.alexmpdev.restaurantmanager.dishes.repository.DishRepository;
 import com.alexmpdev.restaurantmanager.dishes.service.DishService;
-import com.alexmpdev.restaurantmanager.restaurants.model.Restaurant;
-import com.alexmpdev.restaurantmanager.restaurants.service.RestaurantService;
+import com.alexmpdev.restaurantmanager.exception.DishException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +27,8 @@ public class DishServiceImpl implements DishService {
 
     public Dish getDish( Long id ) {
 
-        return this.dishRepository.findById(id).orElse(null);
+        return this.dishRepository.findById(id)
+                .orElseThrow(() -> new DishException(DishException.ERROR_NOT_FOUND));
     }
 
     public void save( Dish dish ) {
@@ -37,7 +37,6 @@ public class DishServiceImpl implements DishService {
     }
 
     public String update( Long id, Dish dish ) {
-
         Dish editableDish = getDish(id);
         editableDish.setTitle(dish.getTitle());
         editableDish.setDescription(dish.getDescription());
