@@ -3,7 +3,8 @@ package com.alexmpdev.restaurantmanager.categories.service.Impl;
 import com.alexmpdev.restaurantmanager.categories.model.Category;
 import com.alexmpdev.restaurantmanager.categories.repository.CategoryRepository;
 import com.alexmpdev.restaurantmanager.categories.service.CategoryService;
-import com.alexmpdev.restaurantmanager.exception.CategoryNotFoundException;
+import com.alexmpdev.restaurantmanager.exception.CategoryException;
+import com.alexmpdev.restaurantmanager.exception.RestaurantException;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
     public Category getCategory(Long id) {
 
-        return this.categoryRepository.findById(id).orElse(null);
+        return this.categoryRepository.findById(id)
+                .orElseThrow(() -> new CategoryException(CategoryException.ERROR_NOT_FOUND));
     }
     public void save(Category category) {
 
@@ -34,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         Category editableCategory = getCategory(id);
         if (editableCategory == null){
-            throw new CategoryNotFoundException("La categoria no existe");
+            throw new CategoryException("La categoria no existe");
         }
         editableCategory.setName(category.getName());
         this.categoryRepository.save(editableCategory);
@@ -43,7 +45,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         Category deleteCategory = getCategory(id);
         if (deleteCategory == null){
-            throw new CategoryNotFoundException("La categoria no existe");
+            throw new CategoryException("La categoria no existe");
         }
         this.categoryRepository.deleteById(id);
     }
