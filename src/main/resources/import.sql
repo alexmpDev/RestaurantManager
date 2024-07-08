@@ -2,3 +2,4 @@ INSERT INTO dishes (price,description,title) VALUES (5.50, 'Helado de chocolate 
 INSERT INTO restaurants (category_id,created_at,description, title,photo) VALUES (1, null, 'new restaurant description', 'New Restaurant', null), (2, null, 'new restaurant description', 'New Restaurant 2', null), (1, null, 'new restaurant description', 'New Restaurant', null), (2, null, 'new restaurant description', 'New Restaurant 2', null), (1, null, 'new restaurant description', 'New Restaurant', null), (2, null, 'new restaurant description', 'New Restaurant 2', null), (3, null, 'new restaurant description', 'PEPA', null), (3, null, 'new restaurant description', 'PEPO', null);
 INSERT INTO category (name) VALUES ('restaurante'),('bar'),('tienda'),('italiano')
 INSERT INTO menu (restaurant_id,title,price) VALUES (1, 'Menu del dia', 30),(1, 'Menu de noche', 100)
+INSERT INTO category_menu (menu_id,title) VALUES(1,'Primer plato'),(1,'Segundo Plato')
