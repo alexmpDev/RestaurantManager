@@ -1,7 +1,7 @@
-package com.alexmpdev.restaurantmanager.categoryMenu.controller;
+package com.alexmpdev.restaurantmanager.category_menu.controller;
 
-import com.alexmpdev.restaurantmanager.categoryMenu.model.CategoryMenu;
-import com.alexmpdev.restaurantmanager.categoryMenu.service.CategoryMenuService;
+import com.alexmpdev.restaurantmanager.category_menu.model.CategoryMenu;
+import com.alexmpdev.restaurantmanager.category_menu.service.CategoryMenuService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 

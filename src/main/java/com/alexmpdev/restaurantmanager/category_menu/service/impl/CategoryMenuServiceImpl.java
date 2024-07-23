@@ -1,12 +1,9 @@
-package com.alexmpdev.restaurantmanager.categoryMenu.service.impl;
+package com.alexmpdev.restaurantmanager.category_menu.service.impl;
 
-import com.alexmpdev.restaurantmanager.categories.repository.CategoryRepository;
-import com.alexmpdev.restaurantmanager.categoryMenu.model.CategoryMenu;
-import com.alexmpdev.restaurantmanager.categoryMenu.repository.CategoryMenuRepository;
-import com.alexmpdev.restaurantmanager.categoryMenu.service.CategoryMenuService;
-import com.alexmpdev.restaurantmanager.dishes.model.Dish;
+import com.alexmpdev.restaurantmanager.category_menu.model.CategoryMenu;
+import com.alexmpdev.restaurantmanager.category_menu.repository.CategoryMenuRepository;
+import com.alexmpdev.restaurantmanager.category_menu.service.CategoryMenuService;
 import com.alexmpdev.restaurantmanager.exception.CategoryMenuException;
-import com.alexmpdev.restaurantmanager.exception.DishException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +37,7 @@ public class CategoryMenuServiceImpl implements CategoryMenuService {
 
         CategoryMenu editableCategoryMenu = getCategoryMenu(id);
         editableCategoryMenu.setTitle(categoryMenu.getTitle());
-        editableCategoryMenu.setMenuId(categoryMenu.getMenuId());
+        editableCategoryMenu.setMenu(categoryMenu.getMenu());
         categoryMenuRepository.save(editableCategoryMenu);
     }
 

@@ -1,6 +1,6 @@
-package com.alexmpdev.restaurantmanager.categoryMenu.repository;
+package com.alexmpdev.restaurantmanager.category_menu.repository;
 
-import com.alexmpdev.restaurantmanager.categoryMenu.model.CategoryMenu;
+import com.alexmpdev.restaurantmanager.category_menu.model.CategoryMenu;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CategoryMenuRepository extends JpaRepository<CategoryMenu, Long> {

@@ -1,6 +1,9 @@
 package com.alexmpdev.restaurantmanager.dishes.model;
 
+import com.alexmpdev.restaurantmanager.category_menu.model.CategoryMenu;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "dishes")
@@ -11,6 +14,10 @@ public class Dish {
     private String title;
     private String description;
     private float price;
+
+    @ManyToMany(mappedBy = "dishes")
+    @JsonIgnore
+    private List<CategoryMenu> categoriesMenu;
 
     public Long getId() {
         return Id;
@@ -38,5 +45,13 @@ public class Dish {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public List<CategoryMenu> getCategoriesMenu() {
+        return categoriesMenu;
+    }
+
+    public void setCategoriesMenu(List<CategoryMenu> categoriesMenu) {
+        this.categoriesMenu = categoriesMenu;
     }
 }

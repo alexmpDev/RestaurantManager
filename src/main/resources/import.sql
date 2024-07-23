@@ -3,4 +3,4 @@ INSERT INTO restaurants (category_id,created_at,description, title,photo) VALUES
 INSERT INTO category (name) VALUES ('restaurante'),('bar'),('tienda'),('italiano')
 INSERT INTO menu (restaurant_id,title,price) VALUES (1, 'Menu del dia', 30),(1, 'Menu de noche', 100)
 INSERT INTO category_menu (menu_id,title) VALUES (1,'Primer plato'),(1,'Segundo Plato')
-INSERT INTO category_menu_dish (dish_id,menu_category_id) VALUES (1,1),(2,1),(1,2)
+INSERT INTO category_menu_dish (dish_id,category_menu_id) VALUES (1,1),(2,1),(1,2)

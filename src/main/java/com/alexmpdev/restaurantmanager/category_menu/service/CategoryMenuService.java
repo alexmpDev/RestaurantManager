@@ -1,6 +1,6 @@
-package com.alexmpdev.restaurantmanager.categoryMenu.service;
+package com.alexmpdev.restaurantmanager.category_menu.service;
 
-import com.alexmpdev.restaurantmanager.categoryMenu.model.CategoryMenu;
+import com.alexmpdev.restaurantmanager.category_menu.model.CategoryMenu;
 
 import java.util.List;
 
