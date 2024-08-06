@@ -2,12 +2,18 @@ package com.alexmpdev.restaurantmanager.restaurants.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.time.LocalDate;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "restaurants")
 public class Restaurant {
 
@@ -17,6 +23,7 @@ public class Restaurant {
     private int categoryId;
     private String title;
     @Lob
+    @Column(columnDefinition = "TEXT")
     private String photo;
     private String description;
     private LocalDate createdAt = LocalDate.now();

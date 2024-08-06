@@ -1,8 +1,14 @@
 package com.alexmpdev.restaurantmanager.categories.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "category")
 public class Category {
 

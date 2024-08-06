@@ -3,9 +3,16 @@ package com.alexmpdev.restaurantmanager.dishes.model;
 import com.alexmpdev.restaurantmanager.category_menu.model.CategoryMenu;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "dishes")
 public class Dish {
     @Id
