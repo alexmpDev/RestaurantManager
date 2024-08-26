@@ -22,7 +22,7 @@ public class Dish {
     private String description;
     private float price;
 
-    @ManyToMany(mappedBy = "dishes")
+    @ManyToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<CategoryMenu> categoriesMenu;
 

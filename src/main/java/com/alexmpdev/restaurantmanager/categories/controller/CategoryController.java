@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/category")
 @Tag(name = "CategoryController" , description = "Tratamiento de los datos de las categorias")
-
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -34,13 +33,13 @@ public class CategoryController {
     }
 
     @PostMapping
-    public void create(Category category) {
+    public void create(@RequestBody Category category) {
 
         categoryService.save(category);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable("id")Long id, Category category) throws BadRequestException {
+    public void update(@PathVariable("id")Long id, @RequestBody Category category) throws BadRequestException {
 
         categoryService.update(id, category);
     }
