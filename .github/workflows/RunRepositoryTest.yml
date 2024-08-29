@@ -1,0 +1,23 @@
+name: Run repository test successfully
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+    test:
+      runs-on: ubuntu-22.04
+
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Set up JDK 17
+          uses: actions/setup-java@v4
+          with:
+            java-version: '17'
+            distribution: 'temurin'
+
+        - name: Run repository test
+          run: mvn -Dtest=**/integrations/** test
