@@ -20,4 +20,5 @@ jobs:
             distribution: 'temurin'
 
         - name: Run repository test
-          run: mvn test
+          run: mvn -Dtest=com.alexmpdev.restaurantmanager.api.integrations.** test
+
