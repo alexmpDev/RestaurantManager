@@ -20,4 +20,4 @@ jobs:
             distribution: 'temurin'
 
         - name: Run repository test
-          run: mvn -Dtest=**/integrations/** test
+          run: mvn test
