@@ -22,7 +22,7 @@ import static org.hamcrest.Matchers.notNullValue;
 @SpringBootTest(classes = RestaurantManagerApplication.class)
 @AutoConfigureMockMvc(addFilters = false)
 // @ActiveProfiles("test")
-@Transactional
+// @Transactional
 public class CategoriesIntegrationsTest extends BaseTest {
 
 
