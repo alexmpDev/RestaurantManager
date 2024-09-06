@@ -34,4 +34,4 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
         env:
-          POSTGRES_URL: postgres
+          POSTGRES_URL: 127.0.0.1
