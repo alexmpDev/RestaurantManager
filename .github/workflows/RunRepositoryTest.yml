@@ -22,8 +22,12 @@ jobs:
         - name: Build with Maven
           run: mvn -B package --file pom.xml
 
-        - name: Run repository test
+        - name: Run test
           run: mvn -Dtest=com.alexmpdev.restaurantmanager.api.repository.** test
 
-        - name: Run integrations test
-          run: mvn -Dtest=com.alexmpdev.restaurantmanager.api.integrations.** test
+        - name: Sonar
+          run: mvn -B verify sonar:sonar -Dsonar.projectKey=alexmpDev_RestaurantManager -Dsonar.organization=alexmpdev -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN
+          env:
+            GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
+            SONARCLOUD_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+
