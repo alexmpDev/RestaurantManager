@@ -6,35 +6,32 @@ on:
       - master
 
 jobs:
-    test:
-      runs-on: ubuntu-22.04
-
-      services:
-        postgres:
-          image: postgres:10.8
-          env:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: root
-            POSTGRES_DB: RestaurantManager
-          ports:
-            - 5432/tcp
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
-
-        - name: Set up JDK 17
-          uses: actions/setup-java@v4
-          with:
-            java-version: '17'
-            distribution: 'temurin'
-
-        - name: Run test
-          run: mvn -Dtest=com.alexmpdev.restaurantmanager.api.repository.** test
-
-        - name: Sonar
-          run: mvn -B verify sonar:sonar -Dsonar.projectKey=alexmpDev_RestaurantManager -Dsonar.organization=alexmpdev -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN
-          env:
-            GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
-            SONARCLOUD_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
-            POSTGRES_URL: postgres:5432
-
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD=root
+          POSTGRES_USER=postgres
+          POSTGRES_DB=RestaurantManager
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots verify
+        env:
+          POSTGRES_URL: postgres
