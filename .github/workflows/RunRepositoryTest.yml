@@ -19,9 +19,6 @@ jobs:
             java-version: '17'
             distribution: 'temurin'
 
-        - name: Build with Maven
-          run: mvn -B package --file pom.xml
-
         - name: Run test
           run: mvn -Dtest=com.alexmpdev.restaurantmanager.api.repository.** test
 
