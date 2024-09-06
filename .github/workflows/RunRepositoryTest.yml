@@ -17,7 +17,7 @@ jobs:
             POSTGRES_PASSWORD: root
             POSTGRES_DB: RestaurantManager
           ports:
-            - 54321/tcp
+            - 5432/tcp
       steps:
         - name: Checkout code
           uses: actions/checkout@v4
@@ -36,5 +36,5 @@ jobs:
           env:
             GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
             SONARCLOUD_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
-            POSTGRES_URL: localhost:54321
+            POSTGRES_URL: postgres:5432
 
