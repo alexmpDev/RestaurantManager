@@ -47,7 +47,7 @@ jobs:
         run: mvn -Dtest=com.alexmpdev.restaurantmanager.api.repository.** test
 
       - name: Run integration test
-        run: mvn -Dtest=com.alexmpdev.restaurantmanager.api.integration.** test
+        run: mvn -Dtest=com.alexmpdev.restaurantmanager.api.integrations.** test
         env:
           POSTGRES_URL: 127.0.0.1
 
