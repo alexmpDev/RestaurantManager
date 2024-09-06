@@ -32,16 +32,25 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots verify
+        run: mvn --batch-mode --update-snapshots verify -DskipTests=true
         env:
           POSTGRES_URL: 127.0.0.1
 
       - name: Sonar
-        run: mvn -B verify sonar:sonar -Dsonar.projectKey=alexmpDev_RestaurantManager -Dsonar.organization=alexmpdev -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=alexmpDev_RestaurantManager -Dsonar.organization=alexmpdev -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN -DskipTests=true
         env:
           GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
           SONARCLOUD_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
           POSTGRES_URL: 127.0.0.1
+
+      - name: Run unit test
+        run: mvn -Dtest=com.alexmpdev.restaurantmanager.api.repository.** test
+
+      - name: Run integration test
+        run: mvn -Dtest=com.alexmpdev.restaurantmanager.api.integration.** test
+        env:
+          POSTGRES_URL: 127.0.0.1
+
 
 
 
