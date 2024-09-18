@@ -1,10 +1,9 @@
-package com.alexmpdev.restaurantmanager.categories.service.Impl;
+package com.alexmpdev.restaurantmanager.categories.service.impl;
 
 import com.alexmpdev.restaurantmanager.categories.model.Category;
 import com.alexmpdev.restaurantmanager.categories.repository.CategoryRepository;
 import com.alexmpdev.restaurantmanager.categories.service.CategoryService;
 import com.alexmpdev.restaurantmanager.exception.CategoryException;
-import com.alexmpdev.restaurantmanager.exception.RestaurantException;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

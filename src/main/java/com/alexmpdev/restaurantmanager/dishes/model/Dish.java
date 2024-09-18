@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Entity
@@ -17,7 +16,7 @@ import java.util.List;
 public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     private String title;
     private String description;
     private float price;
@@ -27,7 +26,7 @@ public class Dish {
     private List<CategoryMenu> categoriesMenu;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getTitle() {

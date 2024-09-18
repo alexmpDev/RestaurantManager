@@ -1,13 +1,9 @@
 package com.alexmpdev.restaurantmanager.restaurants.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.File;
 import java.time.LocalDate;
 
 @Entity
@@ -19,7 +15,7 @@ public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     private int categoryId;
     private String title;
     @Lob
@@ -29,7 +25,7 @@ public class Restaurant {
     private LocalDate createdAt = LocalDate.now();
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public int getCategoryId() {

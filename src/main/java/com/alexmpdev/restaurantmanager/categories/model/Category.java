@@ -14,11 +14,11 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     private String name;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getName() {
