@@ -12,7 +12,7 @@ public class BaseTest {
         public Restaurant getRestaurant(Integer categoryId){
             return Restaurant.builder()
                     .categoryId(categoryId == null ? 1: categoryId)
-                    .title("Pollos Hermanos")
+                    .name("Pollos Hermanos")
                     .description("Es un test del guardado")
                     .photo("path/to/photo.jpg")
                     .createdAt(LocalDate.now())

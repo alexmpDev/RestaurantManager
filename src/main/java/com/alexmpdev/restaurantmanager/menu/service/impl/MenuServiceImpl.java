@@ -1,14 +1,11 @@
 package com.alexmpdev.restaurantmanager.menu.service.impl;
 
 import com.alexmpdev.restaurantmanager.exception.MenuException;
-import com.alexmpdev.restaurantmanager.exception.RestaurantException;
 import com.alexmpdev.restaurantmanager.menu.model.Menu;
 import com.alexmpdev.restaurantmanager.menu.repository.MenuRepository;
 import com.alexmpdev.restaurantmanager.menu.service.MenuService;
-import com.alexmpdev.restaurantmanager.restaurants.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

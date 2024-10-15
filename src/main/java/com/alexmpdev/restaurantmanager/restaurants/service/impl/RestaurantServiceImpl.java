@@ -1,15 +1,12 @@
 package com.alexmpdev.restaurantmanager.restaurants.service.impl;
 
-import com.alexmpdev.restaurantmanager.exception.DishException;
 import com.alexmpdev.restaurantmanager.exception.RestaurantException;
 import com.alexmpdev.restaurantmanager.restaurants.model.Restaurant;
 import com.alexmpdev.restaurantmanager.restaurants.repository.RestaurantRepository;
 import com.alexmpdev.restaurantmanager.restaurants.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -29,14 +26,14 @@ public class RestaurantServiceImpl implements RestaurantService {
             restaurants = restaurants
                     .stream()
                     .filter(restaurant ->  category == restaurant.getCategoryId())
-                    .collect(Collectors.toList());
+                    .toList();
         }
 
         if (name != null){
             restaurants = restaurants
                     .stream()
-                    .filter(restaurant ->  restaurant.getTitle().toLowerCase().contains(name.toLowerCase()))
-                    .collect(Collectors.toList());
+                    .filter(restaurant ->  restaurant.getName().toLowerCase().contains(name.toLowerCase()))
+                    .toList();
         }
 
         return restaurants;
@@ -56,7 +53,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
         Restaurant editableRestaurant = getRestaurant(id);
         editableRestaurant.setCategoryId(restaurant.getCategoryId());
-        editableRestaurant.setTitle(restaurant.getTitle());
+        editableRestaurant.setName(restaurant.getName());
         if (restaurant.getPhoto() != null) {
             editableRestaurant.setPhoto(restaurant.getPhoto());
         }

@@ -52,12 +52,12 @@ public class RestaurantRepositoryTest extends BaseTest {
         //Act
         restaurantRepository.save(restaurant);
         Restaurant restaurantSave = restaurantRepository.findById(restaurant.getId()).get();
-        restaurantSave.setTitle("PollosLocos");
+        restaurantSave.setName("PollosLocos");
         restaurantSave.setDescription("Es un test de update");
 
         Restaurant updatedRestaurant = restaurantRepository.save(restaurantSave);
         //Assert
-        Assertions.assertThat(updatedRestaurant.getTitle()).isNotNull().isEqualTo("PollosLocos");
+        Assertions.assertThat(updatedRestaurant.getName()).isNotNull().isEqualTo("PollosLocos");
         Assertions.assertThat(updatedRestaurant.getDescription()).isNotNull().isEqualTo("Es un test de update");
     }
 

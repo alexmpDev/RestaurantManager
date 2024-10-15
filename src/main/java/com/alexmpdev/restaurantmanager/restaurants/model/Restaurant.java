@@ -17,7 +17,7 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int categoryId;
-    private String title;
+    private String name;
     @Lob
     @Column(columnDefinition = "TEXT")
     private String photo;
@@ -36,12 +36,12 @@ public class Restaurant {
         this.categoryId = categoryId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
