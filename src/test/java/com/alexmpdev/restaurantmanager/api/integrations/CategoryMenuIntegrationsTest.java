@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.notNullValue;
 @AutoConfigureMockMvc(addFilters = false)
 // @ActiveProfiles("test")
 @Transactional
-public class CategoryMenuIntegrationsTest extends BaseTest {
+class CategoryMenuIntegrationsTest extends BaseTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -30,7 +30,7 @@ public class CategoryMenuIntegrationsTest extends BaseTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void CategoryMenuIntegrations_GetAllCategoryMenu_Return2CategoryMenu() throws Exception {
+    void CategoryMenuIntegrations_GetAllCategoryMenu_Return2CategoryMenu() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/categoryMenu"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -38,7 +38,7 @@ public class CategoryMenuIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void CategoryMenuIntegrations_GetCategoryMenu_ReturnCategoryMenu() throws Exception {
+    void CategoryMenuIntegrations_GetCategoryMenu_ReturnCategoryMenu() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/categoryMenu/{id}", 1))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -46,7 +46,7 @@ public class CategoryMenuIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void CategoryMenuIntegrations_Save_ReturnStatus200() throws Exception {
+    void CategoryMenuIntegrations_Save_ReturnStatus200() throws Exception {
 
         CategoryMenu createCategoryMenu = getCategoryMenu("Prueba", 1);
 
@@ -58,7 +58,7 @@ public class CategoryMenuIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void CategoryMenuIntegrations_Update_ReturnStatus200() throws Exception {
+    void CategoryMenuIntegrations_Update_ReturnStatus200() throws Exception {
 
         CategoryMenu editCategoryMenu = getCategoryMenu("edit", 1);
 
@@ -69,7 +69,7 @@ public class CategoryMenuIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void CategoryMenuIntegrations_Delete_ReturnStatus200() throws Exception {
+    void CategoryMenuIntegrations_Delete_ReturnStatus200() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/categoryMenu/{id}", 1))
                 .andExpect(MockMvcResultMatchers.status().isOk());

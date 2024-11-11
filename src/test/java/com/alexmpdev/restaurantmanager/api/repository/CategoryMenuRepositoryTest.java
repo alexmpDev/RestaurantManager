@@ -16,13 +16,13 @@ import java.util.Optional;
 
 @SpringBootTest(classes = RestaurantManagerApplication.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class CategoryMenuRepositoryTest extends BaseTest {
+class CategoryMenuRepositoryTest extends BaseTest {
 
     @Autowired
     private CategoryMenuRepository categoryMenuRepository;
 
     @Test
-    public void CategoryMenuRepository_Save_ReturnSavedCategoryMenu(){
+    void CategoryMenuRepository_Save_ReturnSavedCategoryMenu(){
 
         //Arrange
         CategoryMenu categoryMenu = getCategoryMenu("Primer Plato", 1);
@@ -36,7 +36,7 @@ public class CategoryMenuRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void CategoryMenuRepository_Update_ReturnUpdatedCategoryMenu(){
+    void CategoryMenuRepository_Update_ReturnUpdatedCategoryMenu(){
 
         //Arrange
         CategoryMenu categoryMenu = getCategoryMenu("Primer Plato", 1);
@@ -55,7 +55,7 @@ public class CategoryMenuRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void CategoryMenuRepository_Delete_ReturnCategoryMenuIsEmpty(){
+    void CategoryMenuRepository_Delete_ReturnCategoryMenuIsEmpty(){
 
         //Arrange
         CategoryMenu categoryMenu = getCategoryMenu("Primer Plato", 1);

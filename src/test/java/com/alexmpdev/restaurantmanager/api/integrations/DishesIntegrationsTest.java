@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.*;
 @AutoConfigureMockMvc(addFilters = false)
 // @ActiveProfiles("test")
 @Transactional
-public class DishesIntegrationsTest extends BaseTest {
+class DishesIntegrationsTest extends BaseTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -29,7 +29,7 @@ public class DishesIntegrationsTest extends BaseTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void DishesIntegrations_GetAllDishes_Returns2Dishes() throws Exception {
+    void DishesIntegrations_GetAllDishes_Returns2Dishes() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/dishes"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -38,7 +38,7 @@ public class DishesIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void DishesIntegrations_GetDish_ReturnsDish() throws Exception {
+    void DishesIntegrations_GetDish_ReturnsDish() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/dishes/{id}", 1))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -46,7 +46,7 @@ public class DishesIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void DishesIntegrations_Save_ReturnsStatus200() throws Exception {
+    void DishesIntegrations_Save_ReturnsStatus200() throws Exception {
         Dish createDish = getDish();
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/dishes")
@@ -56,7 +56,7 @@ public class DishesIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void DishesIntegrations_Update_ReturnsStatus200() throws Exception {
+    void DishesIntegrations_Update_ReturnsStatus200() throws Exception {
 
         Dish editDish = getDish();
 
@@ -67,7 +67,7 @@ public class DishesIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void DishesIntegrations_Delete_ReturnsStatus200() throws Exception {
+    void DishesIntegrations_Delete_ReturnsStatus200() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/dishes/{id}", 1))
                 .andExpect(MockMvcResultMatchers.status().isOk());

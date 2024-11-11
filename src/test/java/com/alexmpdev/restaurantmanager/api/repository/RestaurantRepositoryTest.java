@@ -19,7 +19,7 @@ import java.util.Optional;
 @SpringBootTest(classes = RestaurantManagerApplication.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 @ActiveProfiles("test")
-public class RestaurantRepositoryTest extends BaseTest {
+class RestaurantRepositoryTest extends BaseTest {
 
     @Autowired
     private RestaurantRepository restaurantRepository;
@@ -30,7 +30,7 @@ public class RestaurantRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void RestaurantRepository_Save_ReturnSavedRestaurant(){
+    void RestaurantRepository_Save_ReturnSavedRestaurant(){
 
         //Arrange
         Restaurant restaurant = getRestaurant(1);
@@ -44,7 +44,7 @@ public class RestaurantRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void RestaurantRepository_Update_ReturnUpdatedRestaurant(){
+    void RestaurantRepository_Update_ReturnUpdatedRestaurant(){
 
         //Arrange
         Restaurant restaurant = getRestaurant(1);
@@ -62,7 +62,7 @@ public class RestaurantRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void RestaurantRepository_Delete_ReturnRestaurantIsEmpty(){
+    void RestaurantRepository_Delete_ReturnRestaurantIsEmpty(){
 
         //Arrange
         Restaurant restaurant = getRestaurant(1);
@@ -77,7 +77,7 @@ public class RestaurantRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void RestaurantRepository_findByCategoryId_ReturnTwoRestaurant(){
+    void RestaurantRepository_findByCategoryId_ReturnTwoRestaurant(){
 
         //Arrange
         Restaurant restaurant = getRestaurant(2);

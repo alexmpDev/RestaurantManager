@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.notNullValue;
 @AutoConfigureMockMvc(addFilters = false)
 // @ActiveProfiles("test")
 @Transactional
-public class RestaurantIntegrationsTest extends BaseTest {
+class RestaurantIntegrationsTest extends BaseTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -30,7 +30,7 @@ public class RestaurantIntegrationsTest extends BaseTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void RestaurantIntegrations_GetAllRestaurants_Return8Restaurants() throws Exception {
+    void RestaurantIntegrations_GetAllRestaurants_Return8Restaurants() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/restaurant"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -38,7 +38,7 @@ public class RestaurantIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void RestaurantIntegrations_GetRestaurants_ReturnRestaurant() throws Exception {
+    void RestaurantIntegrations_GetRestaurants_ReturnRestaurant() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/restaurant/{id}", 1))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -46,7 +46,7 @@ public class RestaurantIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void RestaurantIntegrations_Save_ReturnStatus200() throws Exception {
+    void RestaurantIntegrations_Save_ReturnStatus200() throws Exception {
 
         Restaurant createRestaurant = getRestaurant(1);
 
@@ -58,7 +58,7 @@ public class RestaurantIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void RestaurantIntegrations_Update_ReturnStatus200() throws Exception {
+    void RestaurantIntegrations_Update_ReturnStatus200() throws Exception {
 
         Restaurant editRestaurant = getRestaurant(1);
 
@@ -70,7 +70,7 @@ public class RestaurantIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void RestaurantIntegrations_Delete_ReturnStatus200() throws Exception {
+    void RestaurantIntegrations_Delete_ReturnStatus200() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/restaurant/{id}", 1))
                 .andExpect(MockMvcResultMatchers.status().isOk());

@@ -14,13 +14,13 @@ import java.util.Optional;
 
 @SpringBootTest(classes = RestaurantManagerApplication.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class DishesRepositoryTest extends BaseTest {
+class DishesRepositoryTest extends BaseTest {
 
     @Autowired
     private DishRepository dishRepository;
 
     @Test
-    public void DishRepository_Save_ReturnSavedDish(){
+    void DishRepository_Save_ReturnSavedDish(){
 
         //Arrange
         Dish dish = getDish();
@@ -34,7 +34,7 @@ public class DishesRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void DishRepository_Update_ReturnUpdatedDish(){
+    void DishRepository_Update_ReturnUpdatedDish(){
 
         //Arrange
         Dish dish = getDish();
@@ -52,7 +52,7 @@ public class DishesRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void DishRepository_Delete_ReturnDishIsEmpty(){
+    void DishRepository_Delete_ReturnDishIsEmpty(){
 
         //Arrange
         Dish dish = getDish();

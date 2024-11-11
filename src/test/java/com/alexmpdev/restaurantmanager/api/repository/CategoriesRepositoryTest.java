@@ -14,13 +14,13 @@ import java.util.Optional;
 
 @SpringBootTest(classes = RestaurantManagerApplication.class)
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class CategoriesRepositoryTest extends BaseTest {
+class CategoriesRepositoryTest extends BaseTest {
 
     @Autowired
     private CategoryRepository categoryRepository;
 
     @Test
-    public void CategoriesRepository_Save_ReturnSavedCategory(){
+    void CategoriesRepository_Save_ReturnSavedCategory(){
         //Arrange
         Category category = getCategory("Restaurante");
 
@@ -34,7 +34,7 @@ public class CategoriesRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void CategoriesRepository_Update_ReturnUpdatedCategory(){
+    void CategoriesRepository_Update_ReturnUpdatedCategory(){
         //Arrange
         Category category = getCategory("Restaurante");
 
@@ -50,7 +50,7 @@ public class CategoriesRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void CategoriesRepository_Delete_ReturnCategoryIsEmpty(){
+    void CategoriesRepository_Delete_ReturnCategoryIsEmpty(){
         //Arrange
         Category category = getCategory("Restaurante");
 

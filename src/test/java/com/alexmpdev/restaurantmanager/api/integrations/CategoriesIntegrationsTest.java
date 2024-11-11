@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -21,9 +20,8 @@ import static org.hamcrest.Matchers.notNullValue;
 
 @SpringBootTest(classes = RestaurantManagerApplication.class)
 @AutoConfigureMockMvc(addFilters = false)
-// @ActiveProfiles("test")
 @Transactional
-public class CategoriesIntegrationsTest extends BaseTest {
+class CategoriesIntegrationsTest extends BaseTest {
 
 
     @Autowired private MockMvc mockMvc;
@@ -32,7 +30,7 @@ public class CategoriesIntegrationsTest extends BaseTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void CategoriesIntegrations_GetAllCategories_Returns4Categories() throws Exception {
+    void CategoriesIntegrations_GetAllCategories_Returns4Categories() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/category"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -41,7 +39,7 @@ public class CategoriesIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void CategoriesIntegrations_GetCategory_ReturnsCategory() throws Exception {
+    void CategoriesIntegrations_GetCategory_ReturnsCategory() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/category/{id}", 1))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -50,7 +48,7 @@ public class CategoriesIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void CategoriesIntegrations_Create_ReturnsStatus200() throws Exception {
+    void CategoriesIntegrations_Create_ReturnsStatus200() throws Exception {
 
         Category createCategory = getCategory("Prueba");
 
@@ -62,7 +60,7 @@ public class CategoriesIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void CategoriesIntegrations_Update_ReturnsStatus200() throws Exception {
+    void CategoriesIntegrations_Update_ReturnsStatus200() throws Exception {
 
         Category editCategory = getCategory("Edit");
 
@@ -74,7 +72,7 @@ public class CategoriesIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void CategoriesIntegrations_Delete_ReturnsStatus200() throws Exception {
+    void CategoriesIntegrations_Delete_ReturnsStatus200() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/category/{id}", 1))
                 .andExpect(MockMvcResultMatchers.status().isOk());

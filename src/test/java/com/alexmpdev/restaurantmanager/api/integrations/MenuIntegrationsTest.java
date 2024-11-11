@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.notNullValue;
 @AutoConfigureMockMvc(addFilters = false)
 // @ActiveProfiles("test")
 @Transactional
-public class MenuIntegrationsTest extends BaseTest {
+class MenuIntegrationsTest extends BaseTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -29,7 +29,7 @@ public class MenuIntegrationsTest extends BaseTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void MenuIntegrations_GetAllMenu_Return2Menu() throws Exception{
+    void MenuIntegrations_GetAllMenu_Return2Menu() throws Exception{
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/menu"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -38,7 +38,7 @@ public class MenuIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void MenuIntegrations_GetMenu_ReturnMenu() throws Exception {
+    void MenuIntegrations_GetMenu_ReturnMenu() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/menu/{id}", 1))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -46,7 +46,7 @@ public class MenuIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void MenuIntegrations_Save_ReturnStatus200() throws Exception {
+    void MenuIntegrations_Save_ReturnStatus200() throws Exception {
         Menu createMenu = getMenu(1);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/menu")
@@ -56,7 +56,7 @@ public class MenuIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void MenuIntegrations_Update_ReturnStatus200() throws Exception {
+    void MenuIntegrations_Update_ReturnStatus200() throws Exception {
         Menu editMenu = getMenu(1);
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/menu/{id}", 1)
@@ -67,7 +67,7 @@ public class MenuIntegrationsTest extends BaseTest {
     }
 
     @Test
-    public void MenuIntegrations_Delete_ReturnStatus200()throws Exception {
+    void MenuIntegrations_Delete_ReturnStatus200()throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/menu/{id}", 1))
                 .andExpect(MockMvcResultMatchers.status().isOk());
