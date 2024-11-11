@@ -29,7 +29,7 @@ class CategoriesRepositoryTest extends BaseTest {
 
         //Assert
         Assertions.assertThat(savedCategory).isNotNull();
-        Assertions.assertThat(savedCategory.getId()).isGreaterThan(0);
+        Assertions.assertThat(savedCategory.getId()).isPositive();
 
     }
 

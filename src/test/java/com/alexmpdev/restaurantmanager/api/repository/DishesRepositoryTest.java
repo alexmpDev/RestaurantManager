@@ -30,7 +30,7 @@ class DishesRepositoryTest extends BaseTest {
 
         //Assert
         Assertions.assertThat(savedDish).isNotNull();
-        Assertions.assertThat(savedDish.getId()).isGreaterThan(0);
+        Assertions.assertThat(savedDish.getId()).isPositive();
     }
 
     @Test

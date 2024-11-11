@@ -40,7 +40,7 @@ public class BaseTest {
             return Category.builder()
                     .name(name == null ? "Restaurante" : name)
                     .build();
-        };
+        }
 
         public CategoryMenu getCategoryMenu(String title, Integer menuId){
 

@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
@@ -32,7 +31,7 @@ class CategoryMenuRepositoryTest extends BaseTest {
 
         //Assert
         Assertions.assertThat(savedCategoryMenu).isNotNull();
-        Assertions.assertThat(savedCategoryMenu.getId()).isGreaterThan(0);
+        Assertions.assertThat(savedCategoryMenu.getId()).isPositive();
     }
 
     @Test

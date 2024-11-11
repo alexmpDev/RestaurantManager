@@ -40,7 +40,7 @@ class RestaurantRepositoryTest extends BaseTest {
 
         //Assert
         Assertions.assertThat(savedRestaurant).isNotNull();
-        Assertions.assertThat(savedRestaurant.getId()).isGreaterThan(0);
+        Assertions.assertThat(savedRestaurant.getId()).isPositive();
     }
 
     @Test
@@ -92,6 +92,6 @@ class RestaurantRepositoryTest extends BaseTest {
 
         //Assert
         Assertions.assertThat(restaurantList).isNotNull();
-        Assertions.assertThat(restaurantList.size()).isEqualTo(2);
+        Assertions.assertThat(restaurantList).hasSize(2);
     }
 }
