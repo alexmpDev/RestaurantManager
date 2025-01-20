@@ -4,6 +4,7 @@ import com.alexmpdev.restaurantmanager.categories.model.Category;
 import com.alexmpdev.restaurantmanager.categories.repository.CategoryRepository;
 import com.alexmpdev.restaurantmanager.categories.service.impl.CategoryServiceImpl;
 import com.alexmpdev.restaurantmanager.common.BaseTest;
+import org.apache.coyote.BadRequestException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
@@ -33,6 +35,20 @@ public class CategoriesServiceTest extends BaseTest {
 
         verify(categoryRepository).save(category);
 
+    }
+
+    @Test
+    void CategoryService_GetCategory_returnList(){
+
+        Long categoryId = 1L;
+        Category expectedCategory = getCategory("Prueba");
+
+        when(categoryRepository.findById(categoryId)).thenReturn(Optional.of(expectedCategory));
+
+        Category actualCategory = categoryService.getCategory(categoryId);
+
+        verify(categoryRepository, atLeastOnce()).findById(categoryId);
+        Assertions.assertEquals(expectedCategory, actualCategory);
     }
 
     @Test
