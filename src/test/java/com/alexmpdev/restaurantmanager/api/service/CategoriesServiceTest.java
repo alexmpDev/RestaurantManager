@@ -38,7 +38,7 @@ public class CategoriesServiceTest extends BaseTest {
     }
 
     @Test
-    void CategoryService_GetCategory_returnList(){
+    void CategoryService_GetCategory_returnCategory(){
 
         Long categoryId = 1L;
         Category expectedCategory = getCategory("Prueba");
