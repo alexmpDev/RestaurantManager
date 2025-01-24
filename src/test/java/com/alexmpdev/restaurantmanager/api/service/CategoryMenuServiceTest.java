@@ -72,8 +72,6 @@ public class CategoryMenuServiceTest extends BaseTest {
 
         when(categoryMenuRepository.findById(1L)).thenReturn(Optional.of(categoryMenu));
 
-        categoryMenuService.save(categoryMenu);
-
         categoryMenuService.delete(1L);
 
         verify(categoryMenuRepository, atLeastOnce()).delete(categoryMenu);
