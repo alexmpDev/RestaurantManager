@@ -1,6 +1,5 @@
 package com.alexmpdev.restaurantmanager.api.service;
 
-import com.alexmpdev.restaurantmanager.categories.model.Category;
 import com.alexmpdev.restaurantmanager.common.BaseTest;
 import com.alexmpdev.restaurantmanager.menu.model.Menu;
 import com.alexmpdev.restaurantmanager.menu.repository.MenuRepository;
@@ -64,6 +63,16 @@ public class MenuServiceTest extends BaseTest {
         verify(menuRepository,atLeastOnce()).findAll();
 
         Assertions.assertEquals(expectedMenu, actualMenu);
+    }
+
+    @Test
+    void MenuService_delete_returnStatus200(){
+
+        Menu menu = getMenu(1);
+
+        menuService.delete(1L);
+
+        verify(menuRepository, atLeastOnce()).deleteById(1L);
     }
 
 }

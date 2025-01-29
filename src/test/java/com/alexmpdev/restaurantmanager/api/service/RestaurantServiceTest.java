@@ -65,7 +65,7 @@ public class RestaurantServiceTest extends BaseTest {
     }
 
     @Test
-    void CategoryMenuService_delete_returnStatus200(){
+    void RestaurantService_delete_returnStatus200(){
 
         Restaurant restaurant = getRestaurant( 1);
 

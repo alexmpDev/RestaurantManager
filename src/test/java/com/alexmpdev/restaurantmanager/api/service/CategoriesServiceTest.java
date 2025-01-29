@@ -4,7 +4,6 @@ import com.alexmpdev.restaurantmanager.categories.model.Category;
 import com.alexmpdev.restaurantmanager.categories.repository.CategoryRepository;
 import com.alexmpdev.restaurantmanager.categories.service.impl.CategoryServiceImpl;
 import com.alexmpdev.restaurantmanager.common.BaseTest;
-import org.apache.coyote.BadRequestException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -62,5 +61,18 @@ public class CategoriesServiceTest extends BaseTest {
         verify(categoryRepository,atLeastOnce()).findAll();
 
         Assertions.assertEquals(expectedCategories, actualCategories);
+    }
+
+    @Test
+    void CategoryService_delete_returnStatus200(){
+
+        Category category = getCategory("Prueba");
+
+        when(categoryRepository.findById(1L)).thenReturn(Optional.of(category));
+
+        categoryService.delete(1L);
+
+        verify(categoryRepository, atLeastOnce()).deleteById(1L);
+
     }
 }

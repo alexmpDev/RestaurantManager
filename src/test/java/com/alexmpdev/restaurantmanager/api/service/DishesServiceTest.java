@@ -1,8 +1,5 @@
 package com.alexmpdev.restaurantmanager.api.service;
 
-import com.alexmpdev.restaurantmanager.categories.model.Category;
-import com.alexmpdev.restaurantmanager.categories.repository.CategoryRepository;
-import com.alexmpdev.restaurantmanager.categories.service.impl.CategoryServiceImpl;
 import com.alexmpdev.restaurantmanager.common.BaseTest;
 import com.alexmpdev.restaurantmanager.dishes.model.Dish;
 import com.alexmpdev.restaurantmanager.dishes.repository.DishRepository;
@@ -67,5 +64,17 @@ public class DishesServiceTest extends BaseTest {
         verify(dishRepository,atLeastOnce()).findById(id);
 
         Assertions.assertEquals(expectedDish, actualDish);
+    }
+
+    @Test
+    void DishService_delete_returnStatus200(){
+
+        Dish dish = getDish();
+
+        when(dishRepository.findById(1L)).thenReturn(Optional.of(dish));
+
+        dishService.delete(1L);
+
+        verify(dishRepository, atLeastOnce()).delete(dish);
     }
 }

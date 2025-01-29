@@ -1,6 +1,5 @@
 package com.alexmpdev.restaurantmanager.api.service;
 
-import com.alexmpdev.restaurantmanager.categories.model.Category;
 import com.alexmpdev.restaurantmanager.category_menu.model.CategoryMenu;
 import com.alexmpdev.restaurantmanager.category_menu.repository.CategoryMenuRepository;
 import com.alexmpdev.restaurantmanager.category_menu.service.impl.CategoryMenuServiceImpl;
